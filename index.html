@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03 - First Three.js Project</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+            overflow: hidden;
+        }
+        
+        .main-container {
+            display: flex;
+            width: 95%;
+            max-width: 1400px;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px 15px rgba(10, 20, 219, 0.13);
+            overflow: hidden;
+            height: 90vh;
+        }
+        
+        .login-container {
+            width: 30%;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        
+        
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .input-group {
+            margin-bottom: 25px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c3e50;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+            transition: all 0.3s;
+        }
+        
+        input:focus {
+            outline: none;
+            border-color: #1a73e8;
+            box-shadow: 0 0 0 3px rgba(26,115,232,0.1);
+        }
+        
+        .login-button {
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+        }
+        
+        .login-button:hover {
+            background-color: #0d5bba;
+            transform: translateY(-2px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 30px;
+            color: #95a5a6;
+            font-size: 12px;
+        }
+        
+        #model-container {
+            width: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f5f7fa;
+            overflow: hidden;
+        }    
+        @media (max-width: 900px) {
+            .main-container {
+                flex-direction: column;
+                width: 95%;
+            }
+            .login-container, .model-container {
+                width: 100%;
+            }
+            .login-container {
+                padding: 40px 30px;
+            }
+            #model-container {
+                min-height: 400px;
+            }
+        }
+    </style>
+    <script gsap="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="login-container">
+            <div class="logo-container">
+                <img src="./Screenshot 2025-06-16 160512.png" alt="">
+              
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" placeholder="Enter your username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="login-button">LOGIN</button>
+            </form>
+            
+            <div class="copyright">
+                Copyright@ 2025, All Rights Reserved.
+            </div>
+        </div>
+        
+        <div id="model-container">
+            <!-- The "spline" class should be given position relative or absolute and adjusted to get rid of the logo -->
+            <script type="module" src="script.js"></script>
+        </div>
+    </div>
+     <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            if (!username || !password) {
+                alert('Please fill in all fields');
+                return;
+            }
+            
+            // Add your authentication logic here
+            console.log('Login attempt:', { username, password });
+            alert('Login successful!');
+        });
+      
+    </script>
+<!-- <canvas class="webgl"></canvas> -->
+</body>
+</html>
