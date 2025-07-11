@@ -1,19 +1,26 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
-import { gsap } from "gsap";
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';//movement of camera
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';//model compression
+import { gsap } from "gsap";//animation library
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
-import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';
+import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js';//3D text
 import { degToRad } from 'three/src/math/MathUtils.js';
-import { mx_gradient_float } from 'three/src/nodes/materialx/lib/mx_noise.js';
+
+
+var canvas = document.getElementById('threejs-canvas');
+  
 const fontLoader = new FontLoader();
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(38, 35, 35); // x, y, z coordinates
+camera.position.set(18, 15, 25); // x, y, z coordinates
 camera.lookAt(15, 15, 15);
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
+const renderer = new THREE.WebGLRenderer({
+  // canvas: canvas,
+  // alpha: true, // Enable transparency
+  antialias: true,
+ });
+renderer.setSize(window.innerWidth, window.innerHeight, false); //canvas.clientWidth,canvas.clientHeight
 document.body.appendChild(renderer.domElement);
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('https://www.gstatic.com/draco/v1/decoders/');
